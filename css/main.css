@@ -532,7 +532,6 @@ body {
   padding: 18px;
 }
 
-/* SIDEBAR */
 .sidebar {
   width: 240px;
   background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.98));
@@ -652,7 +651,6 @@ body {
 
 .field-inline { display:flex; gap:8px; align-items:center; }
 
-/* INPUTS + BUTTONS */
 .input {
   flex:1; padding:10px 12px; border-radius:10px;
   border:1px solid rgba(15,23,42,0.06);
@@ -693,7 +691,6 @@ body {
 
 .search-row { display:flex; gap:10px; margin-bottom:12px; }
 
-/* ITEMS TABLE */
 .items-table {
   border-radius: calc(var(--radius) - 2px);
   border: 1px solid rgba(15,23,42,0.03);
@@ -741,7 +738,6 @@ body {
 .delete-btn { border:none; background:transparent; cursor:pointer; font-size:16px; }
 .delete-btn:hover { transform: scale(1.05); color: var(--danger); }
 
-/* BILL SUMMARY + RECENT */
 .bill-card .bill-row { display:flex; justify-content:space-between; align-items:center; font-size:13px; margin-bottom:8px; }
 .bill-card hr { border:none; border-top:1px solid rgba(15,23,42,0.03); margin:10px 0; }
 .bill-total { font-weight:700; font-size:14px; }
@@ -760,6 +756,7 @@ body {
   box-shadow: 0 6px 20px rgba(37,99,235,0.08);
   border-color: rgba(37,99,235,0.6);
 }
+
 @media (max-width: 900px) {
   .app { flex-direction: column; padding: 12px; }
   .sidebar {
@@ -774,4 +771,3 @@ body {
   .items-header, .item-row { grid-template-columns: 2fr 1fr 1fr 1fr 0.7fr; }
   .page-title { font-size: 20px; }
 }
-
