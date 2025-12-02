@@ -1,26 +1,13 @@
 (() => {
   "use strict";
+
   const rawMedicines = [
     { id: 1, name: "Telmakind 40mg", batch: "TEL2401", price: 12.5, qty: 2 },
-    { id: 2, name: "Azithromycin 500mg", batch: "AZT2402", price: 24, qty: 1 },
+    { id: 2, name: "Azithromycin 500mg", batch: "AZT2402", price: 24.0, qty: 2 },
     { id: 3, name: "Amoxicillin 250mg", batch: "AMX2403", price: 8.5, qty: 1 },
-    { id: 4, name: "Azithromycin 500mg", batch: "AZT2402", price: 24, qty: 1 },
   ];
 
-  const medicines = (() => {
-    const map = new Map();
-    rawMedicines.forEach((item) => {
-      const key = `${item.name}||${item.batch}`;
-      if (!map.has(key)) {
-        map.set(key, { ...item });
-      } else {
-        const existing = map.get(key);
-        existing.qty += item.qty;
-      }
-    });
-    return Array.from(map.values());
-  })();
-
+  const medicines = rawMedicines.map((m) => ({ ...m }));
   const GST_RATE = 0.12;
 
   const q = (id) => document.getElementById(id);
@@ -41,7 +28,6 @@
   const fetchCustomerBtn = q("fetchCustomerBtn");
 
   function renderItems() {
-    if (!itemsBody) return;
     itemsBody.innerHTML = "";
 
     medicines.forEach((item) => {
@@ -65,7 +51,8 @@
         <div class="col-total">${formatCurrency(item.price * item.qty)}</div>
         <div class="col-action">
           <button class="delete-btn">🗑</button>
-        </div>`;
+        </div>
+      `;
 
       itemsBody.appendChild(row);
     });
@@ -75,20 +62,14 @@
 
   function calculateSummary() {
     const activeItems = medicines.filter((m) => m.qty > 0);
-
-    const subtotal = activeItems.reduce(
-      (sum, item) => sum + item.qty * item.price,
-      0
-    );
+    const subtotal = activeItems.reduce((sum, item) => sum + item.price * item.qty, 0);
     const gst = subtotal * GST_RATE;
     const grand = subtotal + gst;
-
     return { activeItems, subtotal, gst, grand };
   }
 
   function updateSummary() {
     const { activeItems, subtotal, gst, grand } = calculateSummary();
-
     summaryItems.textContent = activeItems.length;
     summarySubtotal.textContent = formatCurrency(subtotal);
     summaryGST.textContent = formatCurrency(gst);
@@ -116,79 +97,66 @@
     };
   }
 
-  if (itemsBody) {
-    itemsBody.addEventListener("click", (e) => {
-      const row = e.target.closest(".item-row");
-      if (!row) return;
+  itemsBody.addEventListener("click", (e) => {
+    const row = e.target.closest(".item-row");
+    if (!row) return;
 
-      const id = Number(row.dataset.id);
-      const item = medicines.find((m) => m.id === id);
-      if (!item) return;
+    const id = Number(row.dataset.id);
+    const item = medicines.find((m) => m.id === id);
+    if (!item) return;
 
-      if (e.target.classList.contains("plus")) {
-        item.qty += 1;
-      } else if (e.target.classList.contains("minus")) {
-        if (item.qty > 1) item.qty -= 1;
-      } else if (e.target.classList.contains("delete-btn")) {
-        item.qty = 0;
-      }
+    if (e.target.classList.contains("plus")) {
+      item.qty += 1;
+    } else if (e.target.classList.contains("minus")) {
+      if (item.qty > 1) item.qty -= 1;
+    } else if (e.target.classList.contains("delete-btn")) {
+      item.qty = 0;
+    }
 
-      renderItems();
-    });
-  }
+    renderItems();
+  });
 
-  if (clearAllBtn) {
-    clearAllBtn.addEventListener("click", () => {
-      medicines.forEach((m) => (m.qty = 0));
-      renderItems();
-    });
-  }
+  clearAllBtn.addEventListener("click", () => {
+    medicines.forEach((m) => (m.qty = 0));
+    renderItems();
+  });
 
-  if (holdBillBtn) {
-    holdBillBtn.addEventListener("click", () => {
-      alert("Bill is put on hold (frontend only).");
-    });
-  }
+  holdBillBtn.addEventListener("click", () => {
+    alert("Bill is put on hold (frontend demo only).");
+  });
 
-  if (generateBillBtn) {
-    generateBillBtn.addEventListener("click", () => {
-      const bill = getCurrentBillPayload();
+  generateBillBtn.addEventListener("click", () => {
+    const bill = getCurrentBillPayload();
 
-      console.group("Generated Bill");
-      console.log(
-        "Customer:",
-        bill.customerName || "(anonymous)",
-        bill.customerMobile
-      );
-      console.table(
-        bill.items.map((it) => ({
-          id: it.id,
-          name: it.name,
-          batch: it.batch,
-          price: formatCurrency(it.price),
-          qty: it.qty,
-          lineTotal: formatCurrency(it.lineTotal),
-        }))
-      );
-      console.log("Subtotal:", formatCurrency(bill.subtotal));
-      console.log("GST:", formatCurrency(bill.gst));
-      console.log("Grand Total:", formatCurrency(bill.grandTotal));
-      console.log("Created At:", bill.createdAt);
-      console.groupEnd();
+    console.group("Generated Bill");
+    console.log("Customer:", bill.customerName || "(anonymous)", bill.customerMobile);
+    console.table(
+      bill.items.map((it) => ({
+        id: it.id,
+        name: it.name,
+        batch: it.batch,
+        price: formatCurrency(it.price),
+        qty: it.qty,
+        lineTotal: formatCurrency(it.lineTotal),
+      }))
+    );
+    console.log("Subtotal:", formatCurrency(bill.subtotal));
+    console.log("GST:", formatCurrency(bill.gst));
+    console.log("Grand Total:", formatCurrency(bill.grandTotal));
+    console.log("Created At:", bill.createdAt);
+    console.groupEnd();
 
-      alert("Bill generated! Check console for JSON.");
-    });
-  }
+    alert("Bill generated! Check console for JSON.");
+  });
 
-  if (fetchCustomerBtn) {
-    fetchCustomerBtn.addEventListener("click", () => {
-      const mobile = customerMobileInput.value.trim();
-      if (mobile === "9876543210") {
-        customerNameInput.value = "Test Customer";
-      } else {
-        alert("No customer found (demo data only).");
-      }
-    });
-  }
+  fetchCustomerBtn.addEventListener("click", () => {
+    const mobile = customerMobileInput.value.trim();
+    if (mobile === "9876543210") {
+      customerNameInput.value = "Test Customer";
+    } else {
+      alert("No customer found (demo data only).");
+    }
+  });
 
   renderItems();
+})();
