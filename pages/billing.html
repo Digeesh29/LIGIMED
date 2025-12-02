@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <title>LigiMed – Smart Billing</title>
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <div class="app">
+
         <aside class="sidebar" role="navigation" aria-label="Main sidebar">
             <div class="sidebar-header">
                 <div class="logo-circle">LM</div>
@@ -32,7 +33,9 @@
             </div>
         </aside>
 
+ 
         <main class="main">
+    
             <header class="topbar">
                 <div class="topbar-left">
                     <h1 class="page-title">Smart Billing</h1>
@@ -52,8 +55,11 @@
                 </div>
             </header>
 
+            
             <div class="content-layout">
+              
                 <div class="left-column">
+                  
                     <section class="card">
                         <h2 class="card-title">Customer Details</h2>
 
@@ -67,7 +73,9 @@
                                         placeholder="Enter mobile number"
                                         class="input"
                                     />
-                                    <button class="btn btn-secondary" id="fetchCustomerBtn">Fetch</button>
+                                    <button class="btn btn-secondary" id="fetchCustomerBtn">
+                                        Fetch
+                                    </button>
                                 </div>
                             </div>
 
@@ -83,6 +91,7 @@
                         </div>
                     </section>
 
+                  
                     <section class="card">
                         <h2 class="card-title">Add Items</h2>
 
@@ -110,7 +119,9 @@
                     </section>
                 </div>
 
+    
                 <div class="right-column">
+             
                     <section class="card bill-card">
                         <h2 class="card-title">Bill Summary</h2>
 
@@ -146,6 +157,7 @@
                         </div>
                     </section>
 
+                    <!-- RECENT BILLS -->
                     <section class="card">
                         <h2 class="card-title">Recent Bills</h2>
 
@@ -179,7 +191,6 @@
             </div>
         </main>
     </div>
-    <script src="../js/main.js"></script>
-    <script src="../js/scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
