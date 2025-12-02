@@ -502,8 +502,6 @@ body {
     background-color: #f5f7fb;
     padding: 24px 32px;
 }
-
-/* Page heading inside billing page */
 .billing-page-header {
     margin-bottom: 18px;
 }
@@ -519,15 +517,11 @@ body {
     color: #6b7280;
     margin-top: 2px;
 }
-
-/* Main layout: left (forms + items) and right (summary + recent) */
 .billing-page-layout {
     display: flex;
     gap: 20px;
     align-items: flex-start;
 }
-
-/* Columns */
 .billing-page .left-column {
     flex: 2.3;
     display: flex;
@@ -541,8 +535,6 @@ body {
     flex-direction: column;
     gap: 16px;
 }
-
-/* Card style – scoped only inside billing page */
 .billing-page .card {
     background: #ffffff;
     border-radius: 10px;
@@ -576,8 +568,6 @@ body {
     gap: 8px;
     align-items: center;
 }
-
-/* Inputs & buttons – only inside billing page */
 .billing-page .input {
     flex: 1;
     padding: 9px 11px;
@@ -639,15 +629,11 @@ body {
     width: 100%;
     margin-top: 12px;
 }
-
-/* Search row */
 .billing-page .search-row {
     display: flex;
     gap: 10px;
     margin-bottom: 12px;
 }
-
-/* Items table */
 .billing-page .items-table {
     border-radius: 8px;
     border: 1px solid rgba(15, 23, 42, 0.05);
@@ -749,8 +735,6 @@ body {
     transform: scale(1.05);
     color: #ef4444;
 }
-
-/* Bill summary card */
 .billing-page .bill-card .bill-row {
     display: flex;
     justify-content: space-between;
@@ -775,8 +759,6 @@ body {
     gap: 10px;
     margin-top: 10px;
 }
-
-/* Recent bills list */
 .billing-page .recent-list {
     display: flex;
     flex-direction: column;
@@ -808,8 +790,6 @@ body {
 .billing-page .recent-amount {
     font-weight: 700;
 }
-
-/* Billing responsive */
 @media (max-width: 900px) {
     .billing-page {
         padding: 16px;
