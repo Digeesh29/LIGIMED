@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>LigiMed – Smart Billing</title>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Use the shared main.css -->
+    <link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
     <div class="app">
 
+        <!-- SIDEBAR -->
         <aside class="sidebar" role="navigation" aria-label="Main sidebar">
             <div class="sidebar-header">
                 <div class="logo-circle">LM</div>
@@ -33,9 +35,10 @@
             </div>
         </aside>
 
- 
+        <!-- MAIN AREA -->
         <main class="main">
-    
+
+            <!-- TOP BAR -->
             <header class="topbar">
                 <div class="topbar-left">
                     <h1 class="page-title">Smart Billing</h1>
@@ -43,7 +46,9 @@
                 </div>
 
                 <div class="topbar-right">
-                    <div class="topbar-bell">🔔<span class="badge">3</span></div>
+                    <div class="topbar-bell">
+                        🔔<span class="badge">3</span>
+                    </div>
 
                     <div class="topbar-profile">
                         <div class="avatar">M</div>
@@ -55,11 +60,13 @@
                 </div>
             </header>
 
-            
+            <!-- CONTENT LAYOUT -->
             <div class="content-layout">
-              
+
+                <!-- LEFT COLUMN -->
                 <div class="left-column">
-                  
+
+                    <!-- CUSTOMER DETAILS -->
                     <section class="card">
                         <h2 class="card-title">Customer Details</h2>
 
@@ -91,7 +98,7 @@
                         </div>
                     </section>
 
-                  
+                    <!-- ADD ITEMS -->
                     <section class="card">
                         <h2 class="card-title">Add Items</h2>
 
@@ -119,9 +126,10 @@
                     </section>
                 </div>
 
-    
+                <!-- RIGHT COLUMN -->
                 <div class="right-column">
-             
+
+                    <!-- BILL SUMMARY -->
                     <section class="card bill-card">
                         <h2 class="card-title">Bill Summary</h2>
 
@@ -191,6 +199,9 @@
             </div>
         </main>
     </div>
-    <script src="script.js"></script>
+
+    <!-- SHARED NAV JS + BILLING JS -->
+    <script src="../js/main.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 </html>
