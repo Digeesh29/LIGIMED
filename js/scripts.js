@@ -1,20 +1,20 @@
-(() => {
-  "use strict";
+document.addEventListener("DOMContentLoaded", () => {
+  const itemsBody = document.getElementById("itemsBody");
+  if (!itemsBody) return;  // not on Billing page -> do nothing
 
-  const rawMedicines = [
+  const mopdata = [
     { id: 1, name: "Paracetamol 500mg",  batch: "PCM2401", price: 4.5,  qty: 4 },
     { id: 2, name: "Azithromycin 500mg", batch: "AZT2402", price: 24.0, qty: 1 },
     { id: 3, name: "Amoxicillin 250mg",  batch: "AMX2403", price: 8.5,  qty: 1 },
     { id: 4, name: "Azithromycin 500mg", batch: "AZT2402", price: 24.0, qty: 1 }
   ];
 
-  const medicines = rawMedicines.map((m) => ({ ...m }));
+  let medicines = mopdata.map((m) => ({ ...m }));
   const GST_RATE = 0.12;
 
   const q = (id) => document.getElementById(id);
   const formatCurrency = (value) => "₹" + value.toFixed(2);
 
-  const itemsBody = q("itemsBody");
   const summaryItems = q("summaryItems");
   const summarySubtotal = q("summarySubtotal");
   const summaryGST = q("summaryGST");
@@ -117,47 +117,55 @@
     renderItems();
   });
 
-  clearAllBtn.addEventListener("click", () => {
-    medicines.forEach((m) => (m.qty = 0));
-    renderItems();
-  });
+  if (clearAllBtn) {
+    clearAllBtn.addEventListener("click", () => {
+      medicines.forEach((m) => (m.qty = 0));
+      renderItems();
+    });
+  }
 
-  holdBillBtn.addEventListener("click", () => {
-    alert("Bill is put on hold (frontend demo only).");
-  });
+  if (holdBillBtn) {
+    holdBillBtn.addEventListener("click", () => {
+      alert("Bill is put on hold (frontend demo only).");
+    });
+  }
 
-  generateBillBtn.addEventListener("click", () => {
-    const bill = getCurrentBillPayload();
+  if (generateBillBtn) {
+    generateBillBtn.addEventListener("click", () => {
+      const bill = getCurrentBillPayload();
 
-    console.group("Generated Bill");
-    console.log("Customer:", bill.customerName || "(anonymous)", bill.customerMobile);
-    console.table(
-      bill.items.map((it) => ({
-        id: it.id,
-        name: it.name,
-        batch: it.batch,
-        price: formatCurrency(it.price),
-        qty: it.qty,
-        lineTotal: formatCurrency(it.lineTotal)
-      }))
-    );
-    console.log("Subtotal:", formatCurrency(bill.subtotal));
-    console.log("GST:", formatCurrency(bill.gst));
-    console.log("Grand Total:", formatCurrency(bill.grandTotal));
-    console.log("Created At:", bill.createdAt);
-    console.groupEnd();
+      console.group("Generated Bill");
+      console.log("Customer:", bill.customerName || "(anonymous)", bill.customerMobile);
+      console.table(
+        bill.items.map((it) => ({
+          id: it.id,
+          name: it.name,
+          batch: it.batch,
+          price: formatCurrency(it.price),
+          qty: it.qty,
+          lineTotal: formatCurrency(it.lineTotal)
+        }))
+      );
+      console.log("Subtotal:", formatCurrency(bill.subtotal));
+      console.log("GST:", formatCurrency(bill.gst));
+      console.log("Grand Total:", formatCurrency(bill.grandTotal));
+      console.log("Created At:", bill.createdAt);
+      console.groupEnd();
 
-    alert("Bill generated! Check console for JSON.");
-  });
+      alert("Bill generated! Check console for JSON.");
+    });
+  }
 
-  fetchCustomerBtn.addEventListener("click", () => {
-    const mobile = customerMobileInput.value.trim();
-    if (mobile === "9876543210") {
-      customerNameInput.value = "Test Customer";
-    } else {
-      alert("No customer found (demo data only).");
-    }
-  });
+  if (fetchCustomerBtn) {
+    fetchCustomerBtn.addEventListener("click", () => {
+      const mobile = customerMobileInput.value.trim();
+      if (mobile === "9876543210") {
+        customerNameInput.value = "Test Customer";
+      } else {
+        alert("No customer found (demo data only).");
+      }
+    });
+  }
 
   renderItems();
-})();
+});
