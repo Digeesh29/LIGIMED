@@ -1,6 +1,8 @@
+// js/scripts.js
+
 function initBillingPage() {
   const itemsBody = document.getElementById("itemsBody");
-  if (!itemsBody) return;
+  if (!itemsBody) return;  // not on Billing page
 
   const mopdata = [
     { id: 1, name: "Paracetamol 500mg",  batch: "PCM2401", price: 4.5,  qty: 4 },
@@ -35,23 +37,23 @@ function initBillingPage() {
       if (item.qty <= 0) return;
 
       const row = document.createElement("div");
-      row.className = "billing-item-row";
+      row.className = "item-row";
       row.dataset.id = item.id;
 
       row.innerHTML = `
-        <div class="billing-col-item">
-          <div class="billing-med-name">${item.name}</div>
-          <div class="billing-med-batch">Batch: ${item.batch}</div>
+        <div class="col-item">
+          <div class="med-name">${item.name}</div>
+          <div class="med-batch">Batch: ${item.batch}</div>
         </div>
-        <div class="billing-col-qty billing-qty-control">
-          <button class="billing-qty-btn billing-minus">-</button>
-          <span class="billing-qty-value">${item.qty}</span>
-          <button class="billing-qty-btn billing-plus">+</button>
+        <div class="col-qty qty-control">
+          <button class="qty-btn minus">-</button>
+          <span class="qty-value">${item.qty}</span>
+          <button class="qty-btn plus">+</button>
         </div>
-        <div class="billing-col-price">${formatCurrency(item.price)}</div>
-        <div class="billing-col-total">${formatCurrency(item.price * item.qty)}</div>
-        <div class="billing-col-action">
-          <button class="billing-delete-btn">🗑</button>
+        <div class="col-price">${formatCurrency(item.price)}</div>
+        <div class="col-total">${formatCurrency(item.price * item.qty)}</div>
+        <div class="col-action">
+          <button class="delete-btn">🗑</button>
         </div>
       `;
 
@@ -63,10 +65,7 @@ function initBillingPage() {
 
   function calculateSummary() {
     const activeItems = medicines.filter((m) => m.qty > 0);
-    const subtotal = activeItems.reduce(
-      (sum, item) => sum + item.price * item.qty,
-      0
-    );
+    const subtotal = activeItems.reduce((sum, item) => sum + item.price * item.qty, 0);
     const gst = subtotal * GST_RATE;
     const grand = subtotal + gst;
     return { activeItems, subtotal, gst, grand };
@@ -102,18 +101,18 @@ function initBillingPage() {
   }
 
   itemsBody.addEventListener("click", (e) => {
-    const row = e.target.closest(".billing-item-row");
+    const row = e.target.closest(".item-row");
     if (!row) return;
 
     const id = Number(row.dataset.id);
     const item = medicines.find((m) => m.id === id);
     if (!item) return;
 
-    if (e.target.classList.contains("billing-plus")) {
+    if (e.target.classList.contains("plus")) {
       item.qty += 1;
-    } else if (e.target.classList.contains("billing-minus")) {
+    } else if (e.target.classList.contains("minus")) {
       if (item.qty > 1) item.qty -= 1;
-    } else if (e.target.classList.contains("billing-delete-btn")) {
+    } else if (e.target.classList.contains("delete-btn")) {
       item.qty = 0;
     }
 
@@ -129,7 +128,7 @@ function initBillingPage() {
 
   if (holdBillBtn) {
     holdBillBtn.addEventListener("click", () => {
-      alert("Bill is put on hold (demo only).");
+      alert("Bill is put on hold (frontend demo only).");
     });
   }
 
@@ -173,6 +172,5 @@ function initBillingPage() {
   renderItems();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initBillingPage();
-});
+// Make function visible to main.js
+window.initBillingPage = initBillingPage;
