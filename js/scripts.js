@@ -2,13 +2,13 @@
 
 function initBillingPage() {
   const itemsBody = document.getElementById("itemsBody");
-  if (!itemsBody) return;  // not on Billing page
+  if (!itemsBody) return; // not on Billing page
 
   const mopdata = [
-    { id: 1, name: "Paracetamol 500mg",  batch: "PCM2401", price: 4.5,  qty: 4 },
+    { id: 1, name: "Paracetamol 500mg", batch: "PCM2401", price: 4.5, qty: 4 },
     { id: 2, name: "Azithromycin 500mg", batch: "AZT2402", price: 24.0, qty: 1 },
-    { id: 3, name: "Amoxicillin 250mg",  batch: "AMX2403", price: 8.5,  qty: 1 },
-    { id: 4, name: "Azithromycin 500mg", batch: "AZT2402", price: 24.0, qty: 1 }
+    { id: 3, name: "Amoxicillin 250mg", batch: "AMX2403", price: 8.5, qty: 1 },
+    { id: 4, name: "Azithromycin 500mg", batch: "AZT2402", price: 24.0, qty: 1 },
   ];
 
   let medicines = mopdata.map((m) => ({ ...m }));
@@ -91,12 +91,12 @@ function initBillingPage() {
         batch: item.batch,
         price: item.price,
         qty: item.qty,
-        lineTotal: item.price * item.qty
+        lineTotal: item.price * item.qty,
       })),
       subtotal,
       gst,
       grandTotal: grand,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
   }
 
@@ -145,7 +145,7 @@ function initBillingPage() {
           batch: it.batch,
           price: formatCurrency(it.price),
           qty: it.qty,
-          lineTotal: formatCurrency(it.lineTotal)
+          lineTotal: formatCurrency(it.lineTotal),
         }))
       );
       console.log("Subtotal:", formatCurrency(bill.subtotal));
