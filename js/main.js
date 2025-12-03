@@ -1,3 +1,5 @@
+// js/main.js
+
 const menuItems = document.querySelectorAll('.menu-item');
 const contentArea = document.getElementById('contentArea');
 
@@ -15,7 +17,8 @@ const pageConfig = {
         title: 'Smart Billing',
         subtitle: 'Generate invoices and manage customer bills',
         file: 'pages/billing.html'
-    }
+    },
+    // other pages can be added later...
 };
 
 /* Load HTML file into content area */
@@ -24,6 +27,11 @@ async function loadPage(pageName) {
         const response = await fetch(pageConfig[pageName].file);
         const html = await response.text();
         contentArea.innerHTML = html;
+
+        // After Billing HTML is loaded, initialise billing JS
+        if (pageName === 'billing' && typeof window.initBillingPage === 'function') {
+            window.initBillingPage();
+        }
     } catch (error) {
         contentArea.innerHTML = `<p style="padding:24px;">Error loading page.</p>`;
         console.error(error);
@@ -44,7 +52,7 @@ function setActivePage(pageName) {
     headerTitle.textContent = config.title;
     headerSubtitle.textContent = config.subtitle;
 
-    // Load actual HTML page
+    // Load actual HTML page into contentArea
     loadPage(pageName);
 
     console.log('Navigated to:', pageName);
@@ -60,5 +68,5 @@ menuItems.forEach(item => {
 
 /* Initial load */
 document.addEventListener('DOMContentLoaded', () => {
-    setActivePage('dashboard'); // default page
+    setActivePage('dashboard'); // default page at start
 });
