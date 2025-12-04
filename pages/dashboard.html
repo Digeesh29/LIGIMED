@@ -1,129 +1,227 @@
-<!-- DASHBOARD CONTENT ONLY -->
-<div class="dashboard-page">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Dashboard</title>
+ 
+</head>
+<body>
+    <div class="dashboard-page">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-card-content">
+                    <div class="stat-info">
+                        <div class="stat-title">Total Orders</div>
+                        <div class="stat-value">248</div>
+                        <div class="stat-subtitle">+12% from last month</div>
+                    </div>
+                    <div class="stat-icon blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"/>
+                            <circle cx="20" cy="21" r="1"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
 
-  <div class="container">
+            <div class="stat-card">
+                <div class="stat-card-content">
+                    <div class="stat-info">
+                        <div class="stat-title">Pending Deliveries</div>
+                        <div class="stat-value">15</div>
+                        <div class="stat-subtitle neutral">3 arriving today</div>
+                    </div>
+                    <div class="stat-icon cyan">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                            <polyline points="16 7 22 7 22 13"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Top Stats -->
-    <div class="grid grid-4">
+            <div class="stat-card">
+                <div class="stat-card-content">
+                    <div class="stat-info">
+                        <div class="stat-title">Low Stock Alerts</div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-subtitle warning">Requires attention</div>
+                    </div>
+                    <div class="stat-icon orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
 
-      <!-- Total Orders -->
-      <div class="card">
-        <div class="card-header">
-          <h4>Total Orders</h4>
-          <div class="card-icon orders">📦</div>
+            <div class="stat-card">
+                <div class="stat-card-content">
+                    <div class="stat-info">
+                        <div class="stat-title">Credit Available</div>
+                        <div class="stat-value">₹2.5L</div>
+                        <div class="stat-subtitle neutral">₹50K used this month</div>
+                    </div>
+                    <div class="stat-icon green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                            <line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <h3>248</h3>
-        <span class="text-success">+12% from last month</span>
-      </div>
+        <!-- Quick Actions -->
+        <div class="section-title">Quick Actions</div>
+        <div class="quick-actions-wrapper">
+            <div class="quick-actions">
+                <div class="action-card primary">
+                    <div class="action-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"/>
+                            <circle cx="20" cy="21" r="1"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                    </div>
+                    <div class="action-label">Place Order</div>
+                </div>
 
-      <!-- Pending Deliveries -->
-      <div class="card">
-        <div class="card-header">
-          <h4>Pending Deliveries</h4>
-          <div class="card-icon deliveries">🚚</div>
+                <div class="action-card">
+                    <div class="action-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <div class="action-label">Generate Bill</div>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <div class="action-label">View Inventory</div>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"/>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <div class="action-label">Order History</div>
+                </div>
+            </div>
         </div>
 
-        <h3>15</h3>
-        <span class="text-muted">3 arriving today</span>
-      </div>
+        <!-- Bottom Section -->
+        <div class="bottom-section">
+            <!-- Low Stock Alerts -->
+            <div class="panel">
+                <div class="panel-header">
+                    <svg class="panel-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <div class="panel-title">Low Stock Alerts</div>
+                </div>
 
-      <!-- Low Stock Alerts -->
-      <div class="card">
-        <div class="card-header">
-          <h4>Low Stock Alerts</h4>
-          <div class="card-icon alert">⚠️</div>
+                <div class="stock-item">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-name">Paracetamol 500mg</div>
+                            <div class="stock-quantity">50 / 200 strips</div>
+                        </div>
+                        <button class="restock-btn">Restock</button>
+                    </div>
+                    <div class="progress-bar" style="position: relative;">
+                        <div class="preview-label">Preview</div>
+                        <div class="progress-fill" style="width: 25%;"></div>
+                    </div>
+                </div>
+
+                <div class="stock-item">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-name">Amoxicillin 250mg</div>
+                            <div class="stock-quantity">30 / 150 strips</div>
+                        </div>
+                        <button class="restock-btn">Restock</button>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%;"></div>
+                    </div>
+                </div>
+
+                <div class="stock-item">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-name">Cetirizine 10mg</div>
+                            <div class="stock-quantity">75 / 200 strips</div>
+                        </div>
+                        <button class="restock-btn">Restock</button>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 37.5%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="panel">
+                <div class="panel-title" style="margin-bottom: 20px;">Recent Orders</div>
+
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-id">ORD-1234</div>
+                        <div class="order-status transit">In Transit</div>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-vendor">MedSupply Co.</div>
+                        <div class="order-info">15 items • ₹12,450</div>
+                    </div>
+                </div>
+
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-id">ORD-1233</div>
+                        <div class="order-status delivered">Delivered</div>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-vendor">PharmaCorp</div>
+                        <div class="order-info">8 items • ₹8,200</div>
+                    </div>
+                </div>
+
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-id">ORD-1232</div>
+                        <div class="order-status delivered">Delivered</div>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-vendor">MedSupply Co.</div>
+                        <div class="order-info">22 items • ₹15,890</div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <h3>8</h3>
-        <span class="text-danger">Requires attention</span>
-      </div>
-
-      <!-- Credit Available -->
-      <div class="card">
-        <div class="card-header">
-          <h4>Credit Available</h4>
-          <div class="card-icon available">💳</div>
-        </div>
-
-        <h3>₹2.5L</h3>
-        <span class="text-muted">₹50K used this month</span>
-      </div>
-
     </div>
 
-    <!-- Quick Actions -->
-    <h3 style="margin-top: 35px; margin-bottom: 15px">Quick Actions</h3>
-
-    <div class="grid grid-4">
-      <div class="quick-btn">Place Order</div>
-      <div class="quick-btn">Generate Bill</div>
-      <div class="quick-btn">View Inventory</div>
-      <div class="quick-btn">Order History</div>
-    </div>
-
-    <!-- Low Stock + Recent Orders -->
-    <div class="grid grid-2" style="margin-top: 35px">
-
-      <!-- Low Stock -->
-      <div class="card">
-        <h3>Low Stock Alerts</h3>
-
-        <div class="stock-item">
-          <strong>Paracetamol 500mg</strong>
-          <span class="restock">Restock</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 25%"></div>
-          </div>
-          <small>50 / 200 strips</small>
-        </div>
-
-        <div class="stock-item">
-          <strong>Amoxicillin 250mg</strong>
-          <span class="restock">Restock</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 20%"></div>
-          </div>
-          <small>30 / 150 strips</small>
-        </div>
-
-        <div class="stock-item">
-          <strong>Cetirizine 10mg</strong>
-          <span class="restock">Restock</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 37%"></div>
-          </div>
-          <small>75 / 200 strips</small>
-        </div>
-      </div>
-
-      <!-- Recent Orders -->
-      <div class="card">
-        <h3>Recent Orders</h3>
-
-        <div class="order-card">
-          <strong>ORD-1234</strong>
-          <span class="badge-status in-transit">In Transit</span>
-          <div>MedSupply Co.</div>
-          <small>15 items • ₹12,450</small>
-        </div>
-
-        <div class="order-card">
-          <strong>ORD-1233</strong>
-          <span class="badge-status delivered">Delivered</span>
-          <div>PharmaCorp</div>
-          <small>8 items • ₹8,200</small>
-        </div>
-
-        <div class="order-card">
-          <strong>ORD-1232</strong>
-          <span class="badge-status pending">Pending</span>
-          <div>HealthHub</div>
-          <small>10 items • ₹9,100</small>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
