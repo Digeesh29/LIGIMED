@@ -496,32 +496,34 @@ body {
 /* ===============================
    BILLING PAGE STYLES
    =============================== */
-/* ===============================
-   BILLING PAGE STYLES (inside #contentArea)
-   =============================== */
 
-.content-layout {
+.billing-page {
+  padding: 24px;
+}
+
+/* Layout inside billing page */
+.billing-page .content-layout {
   display: flex;
   gap: 24px;
-  padding: 24px;
   align-items: flex-start;
 }
 
-.left-column {
+.billing-page .left-column {
   flex: 2;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.right-column {
+.billing-page .right-column {
   flex: 1.1;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.card {
+/* Card – only for billing area */
+.billing-page .card {
   background: #ffffff;
   border-radius: 12px;
   padding: 16px 18px;
@@ -529,34 +531,34 @@ body {
   border: 1px solid #e5e7eb;
 }
 
-.card-title {
+.billing-page .card-title {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
 }
 
 /* Customer details layout */
-.customer-grid {
+.billing-page .customer-grid {
   display: grid;
   grid-template-columns: 1.2fr 1.2fr;
   gap: 12px;
 }
 
-.field label {
+.billing-page .field label {
   display: block;
   font-size: 12px;
   color: #6b7280;
   margin-bottom: 6px;
 }
 
-.field-inline {
+.billing-page .field-inline {
   display: flex;
   gap: 8px;
   align-items: center;
 }
 
-/* Inputs + buttons (billing) */
-.input {
+/* Inputs + buttons (billing only) */
+.billing-page .input {
   flex: 1;
   padding: 8px 10px;
   border-radius: 10px;
@@ -564,11 +566,11 @@ body {
   font-size: 13px;
 }
 
-.input::placeholder {
+.billing-page .input::placeholder {
   color: #9ca3af;
 }
 
-.btn {
+.billing-page .btn {
   border-radius: 8px;
   border: none;
   padding: 8px 12px;
@@ -577,50 +579,50 @@ body {
   cursor: pointer;
 }
 
-.btn-primary {
+.billing-page .btn-primary {
   background: #2563eb;
   color: #ffffff;
 }
 
-.btn-secondary {
+.billing-page .btn-secondary {
   background: #eef2ff;
   color: #1d4ed8;
 }
 
-.btn-outline {
+.billing-page .btn-outline {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   color: #111827;
 }
 
-.full-width {
+.billing-page .full-width {
   width: 100%;
   margin-top: 12px;
 }
 
-.search-row {
+.billing-page .search-row {
   display: flex;
   gap: 10px;
   margin-bottom: 12px;
 }
 
 /* Items table */
-.items-table {
+.billing-page .items-table {
   border-radius: 10px;
   border: 1px solid #e5e7eb;
   overflow: hidden;
 }
 
 /* Make header + rows a grid (table-like) */
-.items-header,
-.item-row {
+.billing-page .items-header,
+.billing-page .item-row {
   display: grid;
   grid-template-columns: 3fr 2fr 1.3fr 1.4fr 0.7fr;
   align-items: center;
   gap: 8px;
 }
 
-.items-header {
+.billing-page .items-header {
   background: #f9fafb;
   padding: 10px 14px;
   font-size: 12px;
@@ -628,31 +630,31 @@ body {
   color: #6b7280;
 }
 
-.item-row {
+.billing-page .item-row {
   padding: 10px 14px;
   font-size: 13px;
   border-top: 1px solid #f3f4f6;
 }
 
-.med-name {
+.billing-page .med-name {
   font-weight: 600;
 }
 
-.med-batch {
+.billing-page .med-batch {
   font-size: 11px;
   color: #9ca3af;
   margin-top: 2px;
 }
 
 /* Qty controls */
-.qty-control {
+.billing-page .qty-control {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
 
-.qty-btn {
+.billing-page .qty-btn {
   width: 26px;
   height: 26px;
   border-radius: 999px;
@@ -661,25 +663,25 @@ body {
   cursor: pointer;
 }
 
-.qty-value {
+.billing-page .qty-value {
   min-width: 20px;
   text-align: center;
   font-weight: 600;
 }
 
 /* Price / totals alignment */
-.col-price,
-.col-total {
+.billing-page .col-price,
+.billing-page .col-total {
   text-align: right;
 }
 
-.col-qty,
-.col-action {
+.billing-page .col-qty,
+.billing-page .col-action {
   text-align: center;
 }
 
 /* Delete icon */
-.delete-btn {
+.billing-page .delete-btn {
   border: none;
   background: transparent;
   cursor: pointer;
@@ -687,37 +689,37 @@ body {
 }
 
 /* Bill summary panel */
-.bill-card .bill-row {
+.billing-page .bill-card .bill-row {
   display: flex;
   justify-content: space-between;
   font-size: 13px;
   margin-bottom: 8px;
 }
 
-.bill-card hr {
+.billing-page .bill-card hr {
   border: none;
   border-top: 1px solid #e5e7eb;
   margin: 10px 0;
 }
 
-.bill-total {
+.billing-page .bill-total {
   font-weight: 600;
 }
 
-.quick-actions {
+.billing-page .quick-actions {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
 
 /* Recent bills list */
-.recent-list {
+.billing-page .recent-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.recent-item {
+.billing-page .recent-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -726,20 +728,40 @@ body {
   font-size: 13px;
 }
 
-.recent-item:last-child {
+.billing-page .recent-item:last-child {
   border-bottom: none;
 }
 
-.recent-id {
+.billing-page .recent-id {
   font-weight: 600;
 }
 
-.recent-time {
+.billing-page .recent-time {
   font-size: 11px;
   color: #9ca3af;
 }
 
-.recent-amount {
+.billing-page .recent-amount {
   font-weight: 700;
 }
 
+/* Responsive for billing page */
+@media (max-width: 900px) {
+  .billing-page {
+    padding: 16px;
+  }
+
+  .billing-page .content-layout {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .billing-page .customer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .billing-page .items-header,
+  .billing-page .item-row {
+    grid-template-columns: 2.5fr 1.2fr 1fr 1.2fr 0.8fr;
+  }
+}
