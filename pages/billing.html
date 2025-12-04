@@ -1,139 +1,138 @@
-<!-- pages/billing.html -->
+<div class="billing-page">
 
-<div class="content-layout">
+  <div class="content-layout">
 
-  <!-- LEFT COLUMN -->
-  <div class="left-column">
 
-    <!-- Customer Details -->
-    <section class="card">
-      <h2 class="card-title">Customer Details</h2>
+    <div class="left-column">
 
-      <div class="customer-grid">
-        <div class="field">
-          <label for="customerMobile">Mobile Number</label>
-          <div class="field-inline">
+   
+      <section class="card">
+        <h2 class="card-title">Customer Details</h2>
+
+        <div class="customer-grid">
+          <div class="field">
+            <label for="customerMobile">Mobile Number</label>
+            <div class="field-inline">
+              <input
+                id="customerMobile"
+                type="text"
+                placeholder="Enter mobile number"
+                class="input"
+              />
+              <button class="btn btn-secondary" id="fetchCustomerBtn">
+                Fetch
+              </button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="customerName">Customer Name</label>
             <input
-              id="customerMobile"
+              id="customerName"
               type="text"
-              placeholder="Enter mobile number"
+              placeholder="Enter customer name"
               class="input"
             />
-            <button class="btn btn-secondary" id="fetchCustomerBtn">
-              Fetch
-            </button>
           </div>
         </div>
+      </section>
 
-        <div class="field">
-          <label for="customerName">Customer Name</label>
+
+      <section class="card">
+        <h2 class="card-title">Add Items</h2>
+
+        <div class="search-row">
           <input
-            id="customerName"
+            id="searchInput"
             type="text"
-            placeholder="Enter customer name"
+            placeholder="Search medicine by name or scan barcode..."
             class="input"
           />
-        </div>
-      </div>
-    </section>
-
-    <!-- Add Items -->
-    <section class="card">
-      <h2 class="card-title">Add Items</h2>
-
-      <div class="search-row">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search medicine by name or scan barcode..."
-          class="input"
-        />
-        <button class="btn btn-secondary" id="scanBtn">Scan</button>
-      </div>
-
-      <div class="items-table">
-        <div class="items-header">
-          <div class="col-item">Item</div>
-          <div class="col-qty">Qty</div>
-          <div class="col-price">Price</div>
-          <div class="col-total">Total</div>
-          <div class="col-action">Action</div>
+          <button class="btn btn-secondary" id="scanBtn">Scan</button>
         </div>
 
-        <div id="itemsBody"></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- RIGHT COLUMN -->
-  <div class="right-column">
-
-    <!-- Bill Summary -->
-    <section class="card bill-card">
-      <h2 class="card-title">Bill Summary</h2>
-
-      <div class="bill-row">
-        <span>Items</span>
-        <span id="summaryItems">0</span>
-      </div>
-
-      <div class="bill-row">
-        <span>Subtotal</span>
-        <span id="summarySubtotal">₹0.00</span>
-      </div>
-
-      <div class="bill-row">
-        <span>GST (12%)</span>
-        <span id="summaryGST">₹0.00</span>
-      </div>
-
-      <hr />
-
-      <div class="bill-row bill-total">
-        <span>Grand Total</span>
-        <span id="summaryGrand">₹0.00</span>
-      </div>
-
-      <button class="btn btn-primary full-width" id="generateBillBtn">
-        Generate Bill
-      </button>
-
-      <div class="quick-actions">
-        <button class="btn btn-outline" id="holdBillBtn">Hold Bill</button>
-        <button class="btn btn-outline" id="clearAllBtn">Clear All</button>
-      </div>
-    </section>
-
-    <!-- Recent Bills -->
-    <section class="card">
-      <h2 class="card-title">Recent Bills</h2>
-
-      <div class="recent-list">
-        <div class="recent-item">
-          <div>
-            <div class="recent-id">INV-8765</div>
-            <div class="recent-time">2 mins ago</div>
+        <div class="items-table">
+          <div class="items-header">
+            <div class="col-item">Item</div>
+            <div class="col-qty">Qty</div>
+            <div class="col-price">Price</div>
+            <div class="col-total">Total</div>
+            <div class="col-action">Action</div>
           </div>
-          <div class="recent-amount">₹485</div>
+
+          <div id="itemsBody"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+
+ 
+      <section class="card bill-card">
+        <h2 class="card-title">Bill Summary</h2>
+
+        <div class="bill-row">
+          <span>Items</span>
+          <span id="summaryItems">0</span>
         </div>
 
-        <div class="recent-item">
-          <div>
-            <div class="recent-id">INV-8764</div>
-            <div class="recent-time">15 mins ago</div>
-          </div>
-          <div class="recent-amount">₹1,240</div>
+        <div class="bill-row">
+          <span>Subtotal</span>
+          <span id="summarySubtotal">₹0.00</span>
         </div>
 
-        <div class="recent-item">
-          <div>
-            <div class="recent-id">INV-8763</div>
-            <div class="recent-time">1 hour ago</div>
-          </div>
-          <div class="recent-amount">₹325</div>
+        <div class="bill-row">
+          <span>GST (12%)</span>
+          <span id="summaryGST">₹0.00</span>
         </div>
-      </div>
-    </section>
+
+        <hr />
+
+        <div class="bill-row bill-total">
+          <span>Grand Total</span>
+          <span id="summaryGrand">₹0.00</span>
+        </div>
+
+        <button class="btn btn-primary full-width" id="generateBillBtn">
+          Generate Bill
+        </button>
+
+        <div class="quick-actions">
+          <button class="btn btn-outline" id="holdBillBtn">Hold Bill</button>
+          <button class="btn btn-outline" id="clearAllBtn">Clear All</button>
+        </div>
+      </section>
+
+
+      <section class="card">
+        <h2 class="card-title">Recent Bills</h2>
+
+        <div class="recent-list">
+          <div class="recent-item">
+            <div>
+              <div class="recent-id">INV-8765</div>
+              <div class="recent-time">2 mins ago</div>
+            </div>
+            <div class="recent-amount">₹485</div>
+          </div>
+
+          <div class="recent-item">
+            <div>
+              <div class="recent-id">INV-8764</div>
+              <div class="recent-time">15 mins ago</div>
+            </div>
+            <div class="recent-amount">₹1,240</div>
+          </div>
+
+          <div class="recent-item">
+            <div>
+              <div class="recent-id">INV-8763</div>
+              <div class="recent-time">1 hour ago</div>
+            </div>
+            <div class="recent-amount">₹325</div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </div>
-
