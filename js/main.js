@@ -28,9 +28,12 @@ async function loadPage(pageName) {
         const html = await response.text();
         contentArea.innerHTML = html;
 
-        // After Billing HTML is loaded, initialise billing JS
+        // After page HTML is loaded, initialize page-specific JS
         if (pageName === 'billing' && typeof window.initBillingPage === 'function') {
             window.initBillingPage();
+        }
+        if (pageName === 'dashboard' && typeof window.initializeDashboard === 'function') {
+            window.initializeDashboard();
         }
     } catch (error) {
         contentArea.innerHTML = `<p style="padding:24px;">Error loading page.</p>`;

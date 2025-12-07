@@ -1,32 +1,38 @@
-<div class="billing-page">
+<!-- pages/billing.html -->
 
-  <div class="content-layout">
+<div class="content-layout">
 
+  <!-- LEFT COLUMN -->
+  <div class="left-column">
 
-    <div class="left-column">
+    <!-- Customer Details -->
+    <section class="card">
+      <h2 class="card-title">Customer Details</h2>
 
-   
-      <section class="card">
-        <h2 class="card-title">Customer Details</h2>
-
-        <div class="customer-grid">
-          <div class="field">
-            <label for="customerMobile">Mobile Number</label>
-            <div class="field-inline">
-              <input
-                id="customerMobile"
-                type="text"
-                placeholder="Enter mobile number"
-                class="input"
-              />
-              <button class="btn btn-secondary" id="fetchCustomerBtn">
-                Fetch
-              </button>
-            </div>
+      <div class="customer-grid">
+        <div class="field">
+          <label for="customerMobile">Mobile Number</label>
+          <div class="field-inline">
+            <input
+              id="customerMobile"
+              type="text"
+              placeholder="Enter 10-digit mobile"
+              class="input"
+              maxlength="10"
+            />
+            <button class="btn btn-secondary" id="fetchCustomerBtn">
+              Fetch
+            </button>
           </div>
-
-          <div class="field">
-            <label for="customerName">Customer Name</label>
+          
+          <!-- Customer name display (shown when found) -->
+          <div id="customerNameDisplay" style="display: none; margin-top: 8px; padding: 8px 12px; background: #f0fdf4; border-radius: 6px; border: 1px solid #86efac;">
+            <div style="font-size: 12px; color: #16a34a; margin-bottom: 2px;">Customer Name</div>
+            <div id="customerNameText" style="font-weight: 600; color: #15803d;"></div>
+          </div>
+          
+          <!-- Name input shown when adding new customer -->
+          <div id="customerNameField" style="display: none; margin-top: 8px;">
             <input
               id="customerName"
               type="text"
@@ -35,104 +41,82 @@
             />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
+    <!-- Add Items -->
+    <section class="card">
+      <h2 class="card-title">Add Items</h2>
 
-      <section class="card">
-        <h2 class="card-title">Add Items</h2>
+      <div class="search-row">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search medicine by name or scan barcode..."
+          class="input"
+        />
+      </div>
 
-        <div class="search-row">
-          <input
-            id="searchInput"
-            type="text"
-            placeholder="Search medicine by name or scan barcode..."
-            class="input"
-          />
-          <button class="btn btn-secondary" id="scanBtn">Scan</button>
+      <div class="items-table">
+        <div class="items-header">
+          <div class="col-item">Item</div>
+          <div class="col-qty">Qty</div>
+          <div class="col-price">Price</div>
+          <div class="col-total">Total</div>
+          <div class="col-action">Action</div>
         </div>
 
-        <div class="items-table">
-          <div class="items-header">
-            <div class="col-item">Item</div>
-            <div class="col-qty">Qty</div>
-            <div class="col-price">Price</div>
-            <div class="col-total">Total</div>
-            <div class="col-action">Action</div>
-          </div>
+        <div id="itemsBody"></div>
+      </div>
+    </section>
+  </div>
 
-          <div id="itemsBody"></div>
-        </div>
-      </section>
-    </div>
+  <!-- RIGHT COLUMN -->
+  <div class="right-column">
 
-    <div class="right-column">
+    <!-- Bill Summary -->
+    <section class="card bill-card">
+      <h2 class="card-title">Bill Summary</h2>
 
- 
-      <section class="card bill-card">
-        <h2 class="card-title">Bill Summary</h2>
+      <div class="bill-row">
+        <span>Items</span>
+        <span id="summaryItems">0</span>
+      </div>
 
-        <div class="bill-row">
-          <span>Items</span>
-          <span id="summaryItems">0</span>
-        </div>
+      <div class="bill-row">
+        <span>Subtotal</span>
+        <span id="summarySubtotal">₹0.00</span>
+      </div>
 
-        <div class="bill-row">
-          <span>Subtotal</span>
-          <span id="summarySubtotal">₹0.00</span>
-        </div>
+      <div class="bill-row">
+        <span>GST (12%)</span>
+        <span id="summaryGST">₹0.00</span>
+      </div>
 
-        <div class="bill-row">
-          <span>GST (12%)</span>
-          <span id="summaryGST">₹0.00</span>
-        </div>
+      <hr />
 
-        <hr />
+      <div class="bill-row bill-total">
+        <span>Grand Total</span>
+        <span id="summaryGrand">₹0.00</span>
+      </div>
 
-        <div class="bill-row bill-total">
-          <span>Grand Total</span>
-          <span id="summaryGrand">₹0.00</span>
-        </div>
+      <button class="btn btn-primary full-width" id="generateBillBtn">
+        Generate Bill
+      </button>
 
-        <button class="btn btn-primary full-width" id="generateBillBtn">
-          Generate Bill
-        </button>
+      <div class="quick-actions">
+        <button class="btn btn-outline" id="holdBillBtn">Hold Bill</button>
+        <button class="btn btn-outline" id="clearAllBtn">Clear All</button>
+      </div>
+    </section>
 
-        <div class="quick-actions">
-          <button class="btn btn-outline" id="holdBillBtn">Hold Bill</button>
-          <button class="btn btn-outline" id="clearAllBtn">Clear All</button>
-        </div>
-      </section>
-
-
-      <section class="card">
-        <h2 class="card-title">Recent Bills</h2>
-
-        <div class="recent-list">
-          <div class="recent-item">
-            <div>
-              <div class="recent-id">INV-8765</div>
-              <div class="recent-time">2 mins ago</div>
-            </div>
-            <div class="recent-amount">₹485</div>
-          </div>
-
-          <div class="recent-item">
-            <div>
-              <div class="recent-id">INV-8764</div>
-              <div class="recent-time">15 mins ago</div>
-            </div>
-            <div class="recent-amount">₹1,240</div>
-          </div>
-
-          <div class="recent-item">
-            <div>
-              <div class="recent-id">INV-8763</div>
-              <div class="recent-time">1 hour ago</div>
-            </div>
-            <div class="recent-amount">₹325</div>
-          </div>
-        </div>
-      </section>
-    </div>
+    <!-- Recent Bills -->
+    <section class="card">
+      <h2 class="card-title">Recent Bills</h2>
+      <div id="recentBillsList" class="recent-list">
+        <div style="text-align: center; color: #9ca3af; padding: 20px;">Loading...</div>
+      </div>
+    </section>
   </div>
 </div>
+
